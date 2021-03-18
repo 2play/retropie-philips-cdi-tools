@@ -46,7 +46,7 @@
 # On the RPI-3, 3,5 hours for compilation-time is not unusual
 # Not recommended but to have an idea of compilation-time on a X86 single core 1,6 Ghz, 11 hours compilation-time is not unusual !
 # After compilation mess_libretro.so is in /opt/retropie/libretrocores/lr-mess 
-# Emulationstation is set to use this rom-map for lr-mess : /home/pi/RetroPie/roms/arcadia
+# Emulationstation is set to use this rom-map for lr-mess : /home/pi/RetroPie/roms/cdimono1
 
 # How to run :
 # Make the program executable, dubbleclick and choose open in terminal.
@@ -60,31 +60,31 @@
 #if [ ! -f "$HOME/RetroPie/BIOS/mame/hash/cdi.xml" ]; then wget https://raw.githubusercontent.com/libretro/mame/master/hash/cdi.xml -P $HOME/RetroPie/BIOS/mame/hash; fi
 
 # Create directory-structure so lr-mess will find the BIOS "cdimono1.zip" and the CD-I "*.chd" images and the config file.
-mkdir -p $HOME/RetroPie/roms/arcadia/Philips_CD-I/cdimono1/mame/cfg
+mkdir -p $HOME/RetroPie/roms/cdimono1/mame/cfg
 
 # Additional info about directory structure :
-# The "biosroms" can be placed in (not recommended if other systems are added) : /home/pi/RetroPie/roms/arcadia/Philips_CD-I/cdimono1.zip
-# The "biosroms" can also be in : /home/pi/RetroPie/roms/arcadia/Philips_CD-I/cdimono1/cdimono1.zip
-# A better alternative is to use the RetroPie filestructure and place a link in /home/pi/RetroPie/roms/arcadia/Philips_CD-I/cdimono1/cdimono1.zip
+# The "biosroms" can be placed in (not recommended if other systems are added) : /home/pi/RetroPie/roms/cdimono1.zip
+# The "biosroms" can also be in : /home/pi/RetroPie/roms/cdimono1.zip
+# A better alternative is to use the RetroPie filestructure and place a link in /home/pi/RetroPie/roms/cdimono1/cdimono1.zip
 # Above link has to link to the bios in $HOME/RetroPie/BIOS/cdimono1.zip .
 # A dummy bios file is created in $HOME/RetroPie/BIOS if there is no filename called cdimono1.zip 
 #!!!!!!!!!!!!!!! If a dummy bios file is written, overwrite the dummy bios file with the real bios file !!!!!!!!!!!!!!!
 if [ ! -f "$HOME/RetroPie/BIOS/cdimono1.zip" ]; then touch mkdir $HOME/RetroPie/BIOS/cdimono1/cdimono1.zip; fi
 #
-# A link to the bios file is created in /home/pi/RetroPie/roms/arcadia/Philips_CD-I/cdimono1 (if not already exists)
+# A link to the bios file is created in /home/pi/RetroPie/roms/cdimono1 (if not already exists)
 # So the bios file can be placed in the normal BIOS directory $HOME/RetroPie/BIOS
-if [ ! -f "$HOME/RetroPie/roms/arcadia/Philips_CD-I/cdimono1/cdimono1.zip" ]; then ln -s $HOME/RetroPie/BIOS/cdimono1.zip $HOME/RetroPie/roms/arcadia/Philips_CD-I/cdimono1/cdimono1.zip; fi
+if [ ! -f "$HOME/RetroPie/roms/cdimono1/cdimono1.zip" ]; then ln -s $HOME/RetroPie/BIOS/cdimono1.zip $HOME/RetroPie/roms/cdimono1/cdimono1.zip; fi
 #
-# The "cdrom images"(only CHD) have to be carefully placed in : /home/pi/RetroPie/roms/arcadia/Philips_CD-I/cdimono1
+# The "cdrom images"(only CHD) have to be carefully placed in : /home/pi/RetroPie/roms/cdimono1
 # For example :
-# /home/pi/RetroPie/roms/arcadia/Philips_CD-I/cdimono1/hotel mario (1994)(philips)(eu)[!].chd
+# /home/pi/RetroPie/roms/cdimono1/hotel mario (1994)(philips)(eu)[!].chd
 # And create a link to this file that is called hotmario.bin (or .chd), and place in the same directory.
 # Instead of a link it is also possible to make text file called hotmario.bin (or .chd)
 # The text file may contain text but it is not nessecary !
 # To help a bit : this script adds short-named text files for the possible working titles
 # but if you want to look for the matching game-names see in /home/pi/RetroPie/BIOS/mame/hash/cdi.xml 
 # For example :
-# /home/pi/RetroPie/roms/arcadia/Philips_CD-I/cdimono1/hotmario.bin
+# /home/pi/RetroPie/roms/cdimono1/hotmario.bin
 # ( Above map structure was working and the directory "Philips_CD-I" can be something else ).
 # very important : run the link or the text file (for example "hotmario.bin") from retropie, not the real .chd image !!!!!
 
@@ -92,11 +92,11 @@ if [ ! -f "$HOME/RetroPie/roms/arcadia/Philips_CD-I/cdimono1/cdimono1.zip" ]; th
 # But all the info is kept in the script for educational purposes
 #
 # After the first run, the config files are edited(*1) or created(*3)(*4)(if not existing you did see the Philips_CD-I logo but the controls did not work properly)
-# We want to edit these setting files :
-# 1 - /opt/retropie/configs/all/retroarch-core-options.cfg
-# 2 - /opt/retropie/configs/arcadia/retroarch.cfg
-# 3 - $HOME/RetroPie/roms/arcadia/Philips_CD-I/cdimono1/mame/cfg/cdimono1.cfg
-# 4 - $HOME/RetroPie/roms/arcadia/Philips_CD-I/cdimono1/mame/cfg/default.cfg
+# We want to edit these setting files on PlayBox v2:
+# 1 - /opt/retropie/configs/cdimono1/retroarch-core-options.cfg
+# 2 - /opt/retropie/configs/cdimono1/retroarch.cfg
+# 3 - $HOME/RetroPie/roms/cdimono1/mame/cfg/cdimono1.cfg
+# 4 - $HOME/RetroPie/roms/cdimono1/mame/cfg/default.cfg
 #
 # config file 1 :
 # In retroarch-core-options.cfg
@@ -131,15 +131,15 @@ if [ ! -f "$HOME/RetroPie/roms/arcadia/Philips_CD-I/cdimono1/cdimono1.zip" ]; th
 # So we have to combine solutions to get the mouse fully working
 #
 # In retroarch-core-options.cfg we have to add : mame_mouse_enable = "enabled" to get mouse directions to work
-check_mame_mouse=$(cat /opt/retropie/configs/all/retroarch-core-options.cfg)
+check_mame_mouse=$(cat /opt/retropie/configs/cdimono1/retroarch-core-options.cfg)
 if  [[ "$check_mame_mouse" == *mame_mouse_enable* ]]
 then 
 # enable mame_mouse_enable line 
-sed -i s/mame\_mouse\_enable\ \=\ \"disabled\"/mame\_mouse\_enable\ \=\ \"enabled\"/g /opt/retropie/configs/all/retroarch-core-options.cfg
+sed -i s/mame\_mouse\_enable\ \=\ \"disabled\"/mame\_mouse\_enable\ \=\ \"enabled\"/g /opt/retropie/configs/cdimono1/retroarch-core-options.cfg
 else
 # add and enable mame_mouse_enable on the last line in the file
 # this should always work, also if there are no mame options in the file yet
-echo mame\_mouse\_enable\ \=\ \"enabled\" >> /opt/retropie/configs/all/retroarch-core-options.cfg
+echo mame\_mouse\_enable\ \=\ \"enabled\" >> /opt/retropie/configs/cdimono1/retroarch-core-options.cfg
 fi
 # Due to an issue in lr-mess we can only assign one working mouse button in the lr-mess "config file 3" 
 # But actually we want both mouse buttons to work
@@ -147,8 +147,8 @@ fi
 # We assign the mouse buttons as joystick buttons in "config file 2"
 
 # config file 2 :
-# In an earlier version i patched /opt/retropie/configs/all/retroarch.cfg
-# A better option is to patch /opt/retropie/configs/arcadia/retroarch.cfg
+# In an earlier version i patched /opt/retropie/configs/cdimono1/retroarch.cfg
+# A better option is to patch /opt/retropie/configs/cdimono1/retroarch.cfg
 # In order to get all mouse buttons working, we will assign the mouse buttons in the retroach.cfg as joystick buttons !!!
 # Something more has to be added to get the mouse movements work properly, so they don't get stuck anymore !!!
 # (25-03-2020) The solution is to add an input_grab_mouse_toggle key
@@ -159,8 +159,8 @@ fi
 # After pressing "right-ctrl" the mouse movement are no longer relative to the host enviroment,
 # so the movements don't get stuck anymore !!!
 # When you press "right-ctrl" again, the mouse pointer of the host enviroment becomes visible, then you can see why it gets stuck !
-check_retroarch=$(cat /opt/retropie/configs/arcadia/retroarch.cfg)
-retroarch_config="/opt/retropie/configs/arcadia/retroarch.cfg"
+check_retroarch=$(cat /opt/retropie/configs/cdimono1/retroarch.cfg)
+retroarch_config="/opt/retropie/configs/cdimono1/retroarch.cfg"
 if  [[ "$check_retroarch" != *input_player1_b_mbtn* ]]
 then 
 # adding 'input_player1_b_mbtn = "2"' line  below info line
@@ -193,7 +193,7 @@ fi
 # config file 3 is now created here, so you don't have to make your own settings discribed above
 # full screen is added and 2 joystick buttons assigned 
 # (if the keyboard, mouse-buttons or a joystick is assigned in retroarch.cfg all devices should work now)  
-cat >$HOME/RetroPie/roms/arcadia/Philips_CD-I/cdimono1/mame/cfg/cdimono1.cfg << _EOF_
+cat >$HOME/RetroPie/roms/cdimono1/mame/cfg/cdimono1.cfg << _EOF_
 ﻿<?xml version="1.0"?>
 <!-- This file is autogenerated; comments and unknown tags will be stripped -->
 <mameconfig version="10">
@@ -223,11 +223,11 @@ _EOF_
 # config file 4 :
 # Config file for general input and user interface input 
 # Turn off the "User Interface" from lr-mess for Philips_CD-I by suppressing the key's "tab" and "esc" in :
-# $HOME/Desktop/roms/arcadia/Philips_CD-I/cdimono1/mame/cfg/default.cfg
+# $HOME/Desktop/roms/cdimono1/mame/cfg/default.cfg
 # These keys can get in the way of hotkey or hotkey binds from retroarch
 # If you want to undo this, just restore your backup of default.cfg or just delete the file
 # create a patched default.cfg file
-cat >$HOME/RetroPie/roms/arcadia/Philips_CD-I/cdimono1/mame/cfg/default.cfg << _EOF_
+cat >$HOME/RetroPie/roms/cdimono1/mame/cfg/default.cfg << _EOF_
 ﻿<?xml version="1.0"?>
 <!-- This file is autogenerated; comments and unknown tags will be stripped -->
 <mameconfig version="10">
@@ -270,18 +270,18 @@ do
    if  [[ "$LINE" != *supported* ]] && [[ "$LINE" != *cloneof* ]] && [[ "$LINE" == *TOSEC* ]] && [[ "$LINE" != *baddump* ]] && [[ "$LINE" != *xml* ]]
    then
        software_name=$(echo $LINE | cut -d'"' -f 2)     
-       touch $HOME/RetroPie/roms/arcadia/Philips_CD-I/cdimono1/$software_name.bin
+       touch $HOME/RetroPie/roms/cdimono1/$software_name.bin
        disk_name=$(echo $LINE | cut -d'%' -f 2 | cut -d'"' -f 2) 
        if  [[ "$disk_name" != *1\ of* ]]
        then
-         echo Create the following .chd file from \(.cue\/.bin\) files and place this file in this directory and rename it to : > $HOME/RetroPie/roms/arcadia/Philips_CD-I/cdimono1/$software_name.bin
-         echo $disk_name.chd >> $HOME/RetroPie/roms/arcadia/Philips_CD-I/cdimono1/$software_name.bin
+         echo Create the following .chd file from \(.cue\/.bin\) files and place this file in this directory and rename it to : > $HOME/RetroPie/roms/cdimono1/$software_name.bin
+         echo $disk_name.chd >> $HOME/RetroPie/roms/cdimono1/$software_name.bin
        else
-         echo Create the following .chd file from \(.cue\/.bin\) files and place this file in this directory and rename it to : > $HOME/RetroPie/roms/arcadia/Philips_CD-I/cdimono1/$software_name.bin
-         echo $disk_name.chd >> $HOME/RetroPie/roms/arcadia/Philips_CD-I/cdimono1/$software_name.bin
-         echo ------------------------------------------------------------------------------------------- >> $HOME/RetroPie/roms/arcadia/Philips_CD-I/cdimono1/$software_name.bin
-         echo this is a multi-disc title, check the cdi.xml for more info >> $HOME/RetroPie/roms/arcadia/Philips_CD-I/cdimono1/$software_name.bin
-         echo above name is for the first disk of the title only >> $HOME/RetroPie/roms/arcadia/Philips_CD-I/cdimono1/$software_name.bin        
+         echo Create the following .chd file from \(.cue\/.bin\) files and place this file in this directory and rename it to : > $HOME/RetroPie/roms/cdimono1/$software_name.bin
+         echo $disk_name.chd >> $HOME/RetroPie/roms/cdimono1/$software_name.bin
+         echo ------------------------------------------------------------------------------------------- >> $HOME/RetroPie/roms/cdimono1/$software_name.bin
+         echo this is a multi-disc title, check the cdi.xml for more info >> $HOME/RetroPie/roms/cdimono1/$software_name.bin
+         echo above name is for the first disk of the title only >> $HOME/RetroPie/roms/cdimono1/$software_name.bin        
        fi
   fi  
 done
