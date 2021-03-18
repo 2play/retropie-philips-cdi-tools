@@ -37,12 +37,12 @@
 import os 
 import time
 
-os.rename('/opt/retropie/configs/all/emulationstation/gamelists/arcadia/gamelist.xml', '/opt/retropie/configs/all/emulationstation/gamelists/arcadia/gamelist.xml.bak')
+os.rename('/home/pi/RetroPie/roms/cdimono1/gamelist.xml', '/home/pi/RetroPie/roms/cdimono1/gamelist.xml.BAK')
 
 path_cdi_xml = os.path.expanduser('~/RetroPie/BIOS/mame/hash/cdi.xml')
 
 cdi_xml = open(path_cdi_xml, 'r')
-file = open('/opt/retropie/configs/all/emulationstation/gamelists/arcadia/gamelist.xml','w') 
+file = open('/home/pi/RetroPie/roms/cdimono1/gamelist.xml','w') 
 file.write('<?xml version=\"1.0\"?>\n') 
 file.write('<gameList>\n') 
 
@@ -63,5 +63,5 @@ for name in cdi_xml:
 
 file.write('</gameList>\n') 
 file.close() 
-print "old gamelist backup in /opt/retropie/configs/all/emulationstation/gamelists/arcadia"
-print "new gamelist in /opt/retropie/configs/all/emulationstation/gamelists/arcadia"
+print "Find old gamelist backup in /home/pi/RetroPie/roms/cdimono1"
+print "The new gamelist in /home/pi/RetroPie/roms/cdimono1"
